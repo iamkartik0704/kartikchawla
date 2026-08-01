@@ -594,13 +594,14 @@ class TerminalResume {
     welcome += `</div>`;
 
     // Text block
-    welcome += `<div style="text-align: center;">`;
-    welcome += this.wrapWithColor(divider, "#555555") + `<br>`;
-    welcome += this.wrapWithColor("Interactive Terminal Resume", "#888888") + `<br>`;
-    welcome += this.wrapWithColor("Backend Developer • B.Tech Student • Open Source", "#666666") + `<br>`;
-    welcome += this.wrapWithColor(divider, "#555555") + `<br><br>`;
-    welcome += this.wrapWithColor("Type ", "#666666") + this.wrapWithColor("'help'", "#87af87") + this.wrapWithColor(" to see available commands", "#666666") + `<br>`;
-    welcome += this.wrapWithColor("Press ", "#666666") + this.wrapWithColor("'tab'", "#87af87") + this.wrapWithColor(" to auto-complete commands", "#666666");
+    welcome += `<div style="text-align: center; max-width: 100%; width: 100%;">`;
+    welcome += `<div style="overflow: hidden; max-width: 100%; white-space: nowrap;">` + this.wrapWithColor(divider, "#555555") + `</div>`;
+    welcome += `<div style="white-space: pre-wrap; margin: 5px 0;">` + this.wrapWithColor("Interactive Terminal Resume", "#888888") + `</div>`;
+    welcome += `<div style="white-space: pre-wrap; margin: 5px 0;">` + this.wrapWithColor("Backend Developer • B.Tech Student • Open Source", "#666666") + `</div>`;
+    welcome += `<div style="overflow: hidden; max-width: 100%; white-space: nowrap; margin-bottom: 15px;">` + this.wrapWithColor(divider, "#555555") + `</div>`;
+    
+    welcome += `<div style="white-space: pre-wrap; margin-bottom: 5px;">` + this.wrapWithColor("Type ", "#666666") + this.wrapWithColor("'help'", "#87af87") + this.wrapWithColor(" to see available commands", "#666666") + `</div>`;
+    welcome += `<div style="white-space: pre-wrap;">` + this.wrapWithColor("Press ", "#666666") + this.wrapWithColor("'tab'", "#87af87") + this.wrapWithColor(" to auto-complete commands", "#666666") + `</div>`;
     welcome += `</div>`;
     welcome += `</div>`;
 
