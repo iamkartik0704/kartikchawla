@@ -1103,11 +1103,14 @@
         // Journey Map with Leaflet
         const initialView = { center: [25.5941, 85.1376], zoom: 5 };
 
+        const isMobile = window.innerWidth < 769 || L.Browser.mobile;
         const map = L.map('journey-map', {
             center: initialView.center,
             zoom: initialView.zoom,
             scrollWheelZoom: false,
-            zoomControl: true
+            zoomControl: true,
+            dragging: !isMobile,
+            tap: !isMobile
         });
 
         L.tileLayer('https://watercolormaps.collection.cooperhewitt.org/tile/watercolor/{z}/{x}/{y}.jpg', {
