@@ -529,6 +529,7 @@ body {
   color: var(--text-bright);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px;
+  padding-right: 45px; /* Prevent text from overlapping the close button */
 }
 
 /* Theme selector styles */
