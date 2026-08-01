@@ -913,53 +913,58 @@
             if (!journeyTimeline || !journeyTimelineBack) return;
 
             // Only run animation on desktop
-            if (window.innerWidth < 769) return;
+            if (window.innerWidth < 769) {
+                // Reset map styles for mobile
+                journeyTimeline.style.transform = 'none';
+                journeyTimelineBack.style.display = 'none';
+                journeyTimeline.style.zIndex = '1';
+                journeyTimeline.style.overflowY = 'visible';
+                return;
+            } else {
+                journeyTimelineBack.style.display = 'flex';
+            }
 
             const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
+            
+            // Getting absolute top offset safely
             const rect = journeyTimeline.getBoundingClientRect();
-            const elementTop = rect.top + scrollY;
+            // Use offsetTop instead of getBoundingClientRect() to avoid issues if the element is transformed
+            // Or just compute the absolute top position dynamically without being affected by the current transform
+            const parentRect = journeyTimeline.parentElement.getBoundingClientRect();
+            const elementTop = parentRect.top + scrollY;
+            
+            // Animation starts when the center of the viewport reaches the top of the container
+            const startScroll = elementTop - windowHeight * 0.4;
+            const endScroll = startScroll + 400; // 400px scroll distance to open
 
-            const triggerPoint = scrollY + windowHeight * 0.5;
-
-            if (!journeyTimelineData.hasStarted && triggerPoint >= elementTop) {
-                journeyTimelineData.hasStarted = true;
-                journeyTimelineData.startScroll = scrollY;
+            let progress = 0;
+            if (scrollY > startScroll) {
+                progress = Math.min(1, (scrollY - startScroll) / 400);
             }
 
-            if (journeyTimelineData.hasStarted) {
-                const progress = Math.min(1, Math.max(0, (scrollY - journeyTimelineData.startScroll) / journeyTimelineData.pageRange));
+            // Book left page opening - timeline rotates from back to front
+            const rotateY = 180 - (180 * progress); // 180 -> 0
 
-                // Book left page opening - timeline rotates from back to front
-                const rotateY = 180 - (180 * progress); // 180 -> 0
+            // Both rotate together
+            journeyTimeline.style.transform = `rotateY(${rotateY}deg)`;
+            journeyTimelineBack.style.transform = `rotateY(${rotateY}deg)`;
 
-                // Both rotate together
-                journeyTimeline.style.transform = `rotateY(${rotateY}deg)`;
-                journeyTimelineBack.style.transform = `rotateY(${rotateY}deg)`;
-
-                // Switch z-index at 90 degrees
-                if (rotateY > 95) {
-                    // Map is visible (when book is closed)
-                    journeyTimeline.style.zIndex = '1';
-                    journeyTimelineBack.style.zIndex = '100';
-                } else {
-                    // Timeline content is visible (when book is open)
-                    journeyTimeline.style.zIndex = '100';
-                    journeyTimelineBack.style.zIndex = '1';
-                }
-
-                // Enable scrolling when fully opened
-                if (progress >= 1) {
-                    journeyTimeline.style.overflowY = 'auto';
-                } else {
-                    journeyTimeline.style.overflowY = 'hidden';
-                }
-            } else {
-                // Reset to initial state
-                journeyTimeline.style.transform = 'rotateY(180deg)';
-                journeyTimelineBack.style.transform = 'rotateY(180deg)';
+            // Switch z-index at 90 degrees
+            if (rotateY > 95) {
+                // Map is visible (when book is closed)
                 journeyTimeline.style.zIndex = '1';
                 journeyTimelineBack.style.zIndex = '100';
+            } else {
+                // Timeline content is visible (when book is open)
+                journeyTimeline.style.zIndex = '100';
+                journeyTimelineBack.style.zIndex = '1';
+            }
+
+            // Enable scrolling when fully opened
+            if (progress >= 1) {
+                journeyTimeline.style.overflowY = 'auto';
+            } else {
                 journeyTimeline.style.overflowY = 'hidden';
             }
         }
