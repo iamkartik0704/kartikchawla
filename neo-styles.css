@@ -1596,8 +1596,8 @@ body[data-theme="dark"] .stat-number {
   }
 
   .journey-map-container {
-    height: 450px !important;
-    min-height: 450px !important;
+    height: 550px !important;
+    min-height: 550px !important;
     box-shadow: 3px 3px 0 var(--border);
     margin-top: 2rem;
     z-index: 1;
@@ -1605,7 +1605,7 @@ body[data-theme="dark"] .stat-number {
   }
 
   #journey-map {
-    height: 450px !important;
+    height: 550px !important;
   }
 
   .map-pirate-overlay {
