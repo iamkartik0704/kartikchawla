@@ -1,0 +1,54 @@
+showContact(outputElement = this.output) {
+    const contact = `<span style="color: #ff8c00; font-weight: bold;">📫 Contact Information</span>
+
+${this.wrapWithColor("┌────────────────────────────────────────┐", "#ff8c00")}
+${this.wrapWithColor("│", "#ff8c00")} ${this.wrapWithColor(
+      "Let's connect and create something great!",
+      "#ffffff"
+    )} ${this.wrapWithColor("│", "#ff8c00")}
+${this.wrapWithColor("└────────────────────────────────────────┘", "#ff8c00")}
+
+${this.wrapWithColor("✉", "#ff8c00")}  ${this.wrapWithColor(
+      "Email:",
+      "#ff8c00"
+    )} ${this.wrapWithColor(
+      '<a href="mailto:iamkartik0704@gmail.com" style="color: #ffffff; text-decoration: none;">iamkartik0704@gmail.com</a>',
+      "#ffffff"
+    )}
+
+${this.wrapWithColor("🌐", "#ff8c00")}  ${this.wrapWithColor(
+      "Website:",
+      "#ff8c00"
+    )} ${this.wrapWithColor(
+      '<a href="https://iamkartik0704.me" target="_blank" style="color: #ffffff; text-decoration: none;">iamkartik0704.me</a>',
+      "#ffffff"
+    )}
+
+${this.wrapWithColor("⚡", "#ff8c00")}  ${this.wrapWithColor(
+      "Github:",
+      "#ff8c00"
+    )} ${this.wrapWithColor(
+      '<a href="https://github.com/iamkartik0704" target="_blank" style="color: #ffffff; text-decoration: none;">github.com/iamkartik0704</a>',
+      "#ffffff"
+    )}
+
+${this.wrapWithColor("💼", "#ff8c00")}  ${this.wrapWithColor(
+      "LinkedIn:",
+      "#ff8c00"
+    )} ${this.wrapWithColor(
+      '<a href="https://linkedin.com/in/kartik-chawla-189430203" target="_blank" style="color: #ffffff; text-decoration: none;">linkedin.com/in/kartik-chawla-189430203</a>',
+      "#ffffff"
+    )}
+
+${this.wrapWithColor("╭────────────────────────────────────────╮", "#ff8c00")}
+${this.wrapWithColor("│", "#ff8c00")} ${this.wrapWithColor(
+      "Feel free to reach out for opportunities!",
+      "#ffffff"
+    )} ${this.wrapWithColor("│", "#ff8c00")}
+${this.wrapWithColor("╰────────────────────────────────────────╯", "#ff8c00")}`;
+
+    const contactDiv = document.createElement("div");
+    contactDiv.innerHTML = contact;
+    outputElement.appendChild(contactDiv);
+    this.scrollToBottom(outputElement.closest(".terminal-content"));
+  }
