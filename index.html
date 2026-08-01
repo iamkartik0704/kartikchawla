@@ -924,23 +924,23 @@
                 journeyTimelineBack.style.display = 'flex';
             }
 
-            const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
             
-            // Getting absolute top offset safely
-            const rect = journeyTimeline.getBoundingClientRect();
-            // Use offsetTop instead of getBoundingClientRect() to avoid issues if the element is transformed
-            // Or just compute the absolute top position dynamically without being affected by the current transform
+            // Get position of the container relative to the viewport
             const parentRect = journeyTimeline.parentElement.getBoundingClientRect();
-            const elementTop = parentRect.top + scrollY;
             
-            // Animation starts when the center of the viewport reaches the top of the container
-            const startScroll = elementTop - windowHeight * 0.4;
-            const endScroll = startScroll + 400; // 400px scroll distance to open
+            // Animation starts when element top is at 70% of viewport height
+            // and finishes when it reaches 15% of viewport height
+            const startY = windowHeight * 0.7;
+            const endY = windowHeight * 0.15;
 
             let progress = 0;
-            if (scrollY > startScroll) {
-                progress = Math.min(1, (scrollY - startScroll) / 400);
+            if (parentRect.top < startY) {
+                // As parentRect.top goes from startY down to endY, progress goes from 0 to 1
+                progress = Math.min(1, (startY - parentRect.top) / (startY - endY));
+            }
+            if (parentRect.top > startY) {
+                progress = 0;
             }
 
             // Book left page opening - timeline rotates from back to front
