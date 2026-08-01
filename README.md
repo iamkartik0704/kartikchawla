@@ -13,7 +13,7 @@ Welcome to my personal developer portfolio! This site is built with a striking n
 - Vanilla JavaScript
 
 ## Visit
-You can check it out live at [kartikchawla.github.io/kartikchawla](https://iamkartik0704.github.io/kartikchawla) (or your configured custom domain).
+You can check it out live at [kartikchawla.vercel.app](https://kartikchawla.vercel.app/).
 
 ---
 *Built by Kartik Chawla.*
