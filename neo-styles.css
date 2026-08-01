@@ -1586,7 +1586,7 @@ body[data-theme="dark"] .stat-number {
   .journey-timeline {
     padding: 1rem;
     box-shadow: 3px 3px 0 var(--border);
-    height: auto;
+    height: auto !important;
   }
 
   .timeline-header {
@@ -1596,8 +1596,8 @@ body[data-theme="dark"] .stat-number {
   }
 
   .journey-map-container {
-    height: 300px;
-    min-height: 300px;
+    height: 300px !important;
+    min-height: 300px !important;
     box-shadow: 3px 3px 0 var(--border);
     margin-top: 2rem;
     z-index: 1;
@@ -1605,7 +1605,7 @@ body[data-theme="dark"] .stat-number {
   }
 
   #journey-map {
-    height: 300px;
+    height: 300px !important;
   }
 
   .map-pirate-overlay {
