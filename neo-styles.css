@@ -1586,7 +1586,7 @@ body[data-theme="dark"] .stat-number {
   .journey-timeline {
     padding: 1rem;
     box-shadow: 3px 3px 0 var(--border);
-    height: 400px;
+    height: auto;
   }
 
   .timeline-header {
@@ -1596,13 +1596,16 @@ body[data-theme="dark"] .stat-number {
   }
 
   .journey-map-container {
-    min-height: 400px;
+    height: 300px;
+    min-height: 300px;
     box-shadow: 3px 3px 0 var(--border);
+    margin-top: 2rem;
     z-index: 1;
+    border-radius: 4px;
   }
 
   #journey-map {
-    height: 400px;
+    height: 300px;
   }
 
   .map-pirate-overlay {
